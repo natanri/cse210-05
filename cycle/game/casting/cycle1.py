@@ -3,7 +3,7 @@ from game.casting.actor import Actor
 from game.shared.point import Point
 
 
-class Cycle_1:
+class Cycle_1(Actor):
 
     """
     Reptiles, Responsability of snake is to move itself
@@ -11,11 +11,13 @@ class Cycle_1:
     def __init__(self):
         super().__init__()
         self._segments = []
+        #self.prepare_body()
+        
 
     def get_segments(self):
         return self._segments
 
-    def get_move_next(self):
+    def move_next(self):
         for segment in self._segments:
             segment.move_next()
 
@@ -24,7 +26,7 @@ class Cycle_1:
             previous = self._segments[i-1]
             velocity = previous.get_velocity()
             trailing.set_velocity(velocity)
-        self.grow_trail(1)
+        self.grow_tail(1)
 
     def get_head(self):
         return self._segments[0]
@@ -54,3 +56,4 @@ class Cycle_1:
         segment.set_text("8")
         segment._color(color)
         self._segments.append(segment)
+        
